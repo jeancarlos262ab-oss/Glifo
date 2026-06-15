@@ -1,0 +1,25 @@
+.header {
+  margin-bottom: 56px;
+}
+
+.header.center {
+  text-align: center;
+}
+
+.header.center .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}

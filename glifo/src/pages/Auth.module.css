@@ -1,0 +1,651 @@
+/* ─────────────────────────────────────────
+   ROOT
+───────────────────────────────────────── */
+.root {
+  height: 100dvh;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  padding: clamp(56px, 7vh, 88px) 24px clamp(40px, 5vh, 64px);
+  background: var(--bg-base);
+}
+
+/* ── Logo BUAP gigante al fondo ─────────── */
+.buapLogoContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: fadeScale 0.8s ease-out both;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buapLogo {
+  width: min(95vw, 95vh, 1200px);
+  height: auto;
+  max-width: 85vw;
+  max-height: 85vh;
+  display: block;
+  filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.15));
+  object-fit: contain;
+  opacity: 0.35;
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  to {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ── Decoración tipográfica de fondo ──── */
+.bgType {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bgLeft,
+.bgRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.02em;
+}
+
+.bgLeft  { left: 0;  align-items: flex-start; padding-left:  4vw;  justify-content: center; gap: 0.25em; }
+.bgRight { right: 0; align-items: flex-end;   padding-right: 4vw;  justify-content: space-between; padding-top: 6vh; padding-bottom: 6vh; }
+
+/* ── Palabras desglosadas: Benemérita Universidad Autónoma de Puebla ── */
+.wordBenemerita {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent-primary);
+  opacity: 0.07;
+  white-space: nowrap;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  font-size: clamp(1.8rem, 3.5vw, 4rem);
+  font-style: italic;
+}
+
+.wordUniversidad {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent-primary);
+  opacity: 0.065;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
+  font-size: clamp(2.2rem, 4vw, 5rem);
+  font-style: normal;
+}
+
+.wordAutonoma {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent-primary);
+  opacity: 0.075;
+  white-space: nowrap;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  font-size: clamp(1.9rem, 3.8vw, 4.5rem);
+  font-style: italic;
+}
+
+.wordDe {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--accent-primary);
+  opacity: 0.05;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  line-height: 0.98;
+  font-size: clamp(0.9rem, 1.8vw, 2rem);
+  font-style: normal;
+  margin-left: 0.5em;
+}
+
+.wordPuebla {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--accent-primary);
+  opacity: 0.085;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  line-height: 0.88;
+  font-size: clamp(2.5rem, 4.5vw, 5.5rem);
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/* ── Lado derecho: BUAP (arriba, aislado) ── */
+.bgBUAP {
+  font-family: 'Athletic', sans-serif !important;
+  font-size: clamp(3rem, 5vw, 7rem);
+  font-style: normal;
+  opacity: 0.055;
+  letter-spacing: 0.06em;
+  align-self: flex-end;
+  margin-bottom: 0;
+}
+
+/* ── Lado derecho: grupo "Nuestra MÁXIMA Casa De Estudios" ── */
+.bgMaximaGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.04em;
+  align-self: flex-end;
+}
+
+.bgMaximaGroup span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent-primary);
+  display: block;
+  white-space: nowrap;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+}
+
+.bgNuestra     { font-size: clamp(0.8rem, 1.2vw, 1.6rem);  opacity: 0.045; font-style: italic;  font-weight: 300; letter-spacing: 0.04em; }
+.bgMaxima      { font-size: clamp(2rem, 3.5vw, 5rem);  opacity: 0.08;  font-style: italic;  letter-spacing: -0.04em; }
+.bgCasa        { font-size: clamp(1.2rem, 2.2vw, 3.2rem);  opacity: 0.055; font-style: normal;  }
+.bgDeEstudios  { font-size: clamp(0.8rem, 1.3vw, 1.8rem);   opacity: 0.04;  font-style: normal;  font-weight: 400; }
+.bgEstudios    { font-size: clamp(2.2rem, 4vw, 5.5rem);   opacity: 0.06;  font-style: normal;  }
+
+.gridBg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, black 20%, transparent 80%);
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* ── Logo Glifo ────────────────────────── */
+.logoLink {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  text-decoration: none;
+  z-index: 10;
+}
+
+.logoGlyph {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  line-height: 1;
+  font-style: italic;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+/* ── Card ──────────────────────────────── */
+.card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  max-height: calc(100dvh - clamp(110px, 14vh, 170px));
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vh, 40px) clamp(22px, 3vw, 40px);
+  box-shadow: var(--shadow-lg);
+  animation: fadeSlideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* En signup la card se ensancha para las 2 columnas */
+@media (min-width: 520px) {
+  .card:has(.formSignup) {
+    max-width: 720px;
+  }
+}
+
+/* Scrollbar sutil */
+.card::-webkit-scrollbar          { width: 4px; }
+.card::-webkit-scrollbar-track    { background: transparent; }
+.card::-webkit-scrollbar-thumb    { background: var(--border-strong); border-radius: 4px; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Card header ───────────────────────── */
+.cardHeader { margin-bottom: clamp(16px, 2.5vh, 28px); }
+
+.cardLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vh, 1.8rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.15;
+}
+.cardSub {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Toggle ────────────────────────────── */
+.toggle {
+  display: flex;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  margin-bottom: clamp(16px, 2.5vh, 28px);
+  gap: 2px;
+}
+.toggleBtn {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: calc(var(--radius-md) - 2px);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+.toggleActive {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Form ──────────────────────────────── */
+.form     { display: flex; flex-direction: column; gap: clamp(12px, 1.8vh, 18px); }
+.fieldRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field    { display: flex; flex-direction: column; gap: 6px; }
+
+/* ── Signup 2 columnas ─────────────────── */
+@media (min-width: 520px) {
+  .formSignup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(10px, 1.5vh, 16px) 16px;
+  }
+
+  .formSignup > .fieldRow,
+  .formSignup > .checkRow,
+  .formSignup > .errorMsg,
+  .formSignup > .submitRow,
+  .formSignup > .socialDivider,
+  .formSignup > .socialBtns {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Submit row: botón ancho completo ── */
+.submitRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2px;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 20px;
+  background: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+.submitBtn:hover:not(:disabled)  { opacity: 0.88; transform: translateY(-1px); }
+.submitBtn:active:not(:disabled) { transform: translateY(0); }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Separador "o continúa con" ─────────── */
+.socialDivider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  margin-bottom: 10px;
+}
+.socialDividerLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.socialDividerText {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Botones sociales en fila completa ─────────── */
+.socialBtns {
+  display: flex;
+  gap: 10px;
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition),
+              transform var(--transition), box-shadow var(--transition);
+}
+.socialBtn:hover {
+  border-color: var(--text-muted);
+  background: var(--bg-overlay);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin { animation: spin 0.8s linear infinite; }
+
+/* ── Campos ─────────────────────────────── */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.forgotLink {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--accent-azul-suave);
+  transition: color var(--transition);
+}
+.forgotLink:hover { color: var(--accent-primary); }
+
+.input {
+  width: 100%;
+  padding: 9px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  outline: none;
+}
+.input::placeholder { color: var(--text-muted); }
+.input:focus {
+  border-color: var(--accent-azul-suave);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.inputWrap   { position: relative; }
+.inputPadded { padding-right: 42px; }
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+  padding: 0;
+}
+.eyeBtn:hover { color: var(--text-secondary); }
+
+.checkRow { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.checkbox  { width: 15px; height: 15px; margin-top: 1px; accent-color: var(--accent-primary); flex-shrink: 0; cursor: pointer; }
+.checkText { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+.link      { color: var(--accent-azul-suave); transition: color var(--transition); }
+.link:hover { color: var(--accent-primary); }
+
+.errorMsg {
+  background: rgba(176, 74, 74, 0.08);
+  border: 1px solid rgba(176, 74, 74, 0.3);
+  border-radius: var(--radius-md);
+  padding: 9px 14px;
+  font-size: 0.82rem;
+  color: #B04A4A;
+  line-height: 1.5;
+}
+
+/* ── Switch texto ───────────────────────── */
+.switchText {
+  margin-top: clamp(14px, 2vh, 22px);
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.switchLink {
+  background: none;
+  border: none;
+  color: var(--accent-azul-suave);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition);
+  padding: 0;
+}
+.switchLink:hover { color: var(--accent-primary); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE — ANCHO
+════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .wordBenemerita  { font-size: clamp(2rem, 4vw, 5rem); }
+  .wordUniversidad { font-size: clamp(2.5rem, 4.8vw, 6rem); }
+  .wordAutonoma    { font-size: clamp(2.2rem, 4.3vw, 5.5rem); }
+  .wordDe          { font-size: clamp(1rem, 2vw, 2.2rem); }
+  .wordPuebla      { font-size: clamp(3rem, 5.5vw, 7rem); }
+  .bgBUAP        { font-size: clamp(3.5rem, 6vw, 8rem); }
+  .bgNuestra     { font-size: clamp(0.85rem, 1.3vw, 1.6rem); }
+  .bgMaxima      { font-size: clamp(2.5rem, 4.5vw, 5.5rem); }
+  .bgCasa        { font-size: clamp(1.6rem, 2.8vw, 3.5rem); }
+  .bgDeEstudios  { font-size: clamp(0.9rem, 1.5vw, 2rem); }
+  .bgEstudios    { font-size: clamp(3rem, 5vw, 6rem); }
+  
+  .buapLogo {
+    width: min(95vw, 95vh, 800px);
+  }
+  .buapLogoContainer {
+    opacity: 0.12;
+  }
+}
+
+@media (max-width: 600px) {
+  .bgLeft, .bgRight { display: none; }
+  .card             { padding: 22px 18px; max-width: 100%; }
+  .formSignup       { grid-template-columns: 1fr; }
+  .fieldRow         { grid-template-columns: 1fr; }
+  .logoLink         { left: 16px; }
+  
+  .buapLogo {
+    width: min(98vw, 98vh, 500px);
+  }
+  .buapLogoContainer {
+    opacity: 0.1;
+  }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — ALTO
+════════════════════════════════════════ */
+
+/* Landscape ancho: 2 columnas en el form general */
+@media (max-height: 640px) and (min-width: 600px) {
+  .root {
+    justify-content: flex-start;
+    padding: 0;
+    overflow-y: hidden;
+    height: 100dvh;
+    max-height: 100vh;
+  }
+
+  .logoLink { position: fixed; top: 14px; left: 20px; z-index: 20; }
+
+  .card {
+    max-height: none;
+    overflow: visible;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    width: 100%;
+    max-width: none;
+    padding: 52px 0 16px;
+    animation: none;
+  }
+
+  .cardHeader { display: none; }
+  .toggle     { display: none; }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    width: min(860px, 90vw);
+    margin: 0 auto;
+  }
+
+  .form > .fieldRow,
+  .form > .checkRow,
+  .form > .errorMsg,
+  .form > .submitRow,
+  .form > .socialDivider,
+  .form > .socialBtns {
+    grid-column: 1 / -1;
+  }
+
+  .bgLeft, .bgRight { display: none; }
+  
+  .buapLogoContainer {
+    opacity: 0.1;
+  }
+  .buapLogo {
+    width: min(90vh, 700px);
+  }
+}
+
+/* Móvil landscape: scroll */
+@media (max-height: 640px) and (max-width: 599px) {
+  .root {
+    height: auto;
+    min-height: 100dvh;
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding: 56px 16px 24px;
+  }
+
+  .card { max-height: none; overflow: visible; border-radius: var(--radius-lg); padding: 20px 16px; }
+  .bgLeft, .bgRight { display: none; }
+  
+  .buapLogoContainer {
+    opacity: 0.08;
+  }
+  .buapLogo {
+    width: min(95vh, 400px);
+  }
+}
+
+/* Altura media-baja (640–750px): comprimir */
+@media (max-height: 750px) and (min-height: 641px) {
+  .card        { max-height: calc(100dvh - 110px); }
+  .cardHeader  { margin-bottom: 14px; }
+  .toggle      { margin-bottom: 14px; }
+  .form        { gap: 12px; }
+  .switchText  { margin-top: 12px; }
+}

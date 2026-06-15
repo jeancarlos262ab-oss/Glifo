@@ -1,0 +1,361 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0 80px;
+  background: var(--bg-section-a);
+}
+
+.gridBg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+/* Rich multi-stop gradient blob */
+.gradientBlob {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 70%;
+  height: 80%;
+  background: radial-gradient(ellipse at 30% 40%,
+    color-mix(in srgb, #4A9EE0 14%, transparent) 0%,
+    color-mix(in srgb, #A07BE8 8%, transparent) 45%,
+    transparent 70%);
+  pointer-events: none;
+}
+
+/* Second blob bottom-right */
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: 5%;
+  width: 45%;
+  height: 60%;
+  background: radial-gradient(ellipse at 70% 70%,
+    color-mix(in srgb, #3EC98E 10%, transparent) 0%,
+    color-mix(in srgb, #E8A838 6%, transparent) 50%,
+    transparent 70%);
+  pointer-events: none;
+}
+
+.escudo {
+  position: absolute;
+  left: -160px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 520px;
+  height: 520px;
+  object-fit: contain;
+  opacity: 0.12;
+  pointer-events: none;
+  user-select: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+/* ─────────────────────────────────────────
+   COLUMNA DERECHA
+───────────────────────────────────────── */
+.rightCol {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   TIPOGRAFÍA ATLÉTICA BUAP
+───────────────────────────────────────── */
+.buapType {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 0.88;
+  user-select: none;
+  animation: fadeSlideDown 0.7s 0.2s ease both;
+}
+
+.buapLine1,
+.buapLine2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.15em;
+}
+
+.buapLine1 span,
+.buapLine2 span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent-primary);
+  white-space: nowrap;
+  letter-spacing: -0.04em;
+  display: block;
+}
+
+.buapBenemérita {
+  font-size: clamp(1.8rem, 3.2vw, 4.2rem);
+  font-style: italic;
+  opacity: 0.13;
+}
+.buapUniversidad {
+  font-size: clamp(1rem, 1.7vw, 2.2rem);
+  font-style: normal;
+  opacity: 0.08;
+}
+.buapAutónoma {
+  font-size: clamp(0.9rem, 1.4vw, 1.8rem);
+  font-style: normal;
+  opacity: 0.08;
+}
+.buapDe {
+  font-size: clamp(0.6rem, 0.9vw, 1.1rem);
+  font-style: normal;
+  opacity: 0.06;
+}
+.buapPuebla {
+  font-size: clamp(2.2rem, 4vw, 5.4rem);
+  font-style: italic;
+  opacity: 0.13;
+}
+
+/* ─────────────────────────────────────────
+   FLOATING CARDS — coloreadas
+───────────────────────────────────────── */
+.floatingCards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.floatCard {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: floatAnim var(--dur, 5s) ease-in-out infinite var(--delay, 0s);
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent left border per card */
+.floatCard::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--fc-color, var(--accent-primary));
+  border-radius: 0 2px 2px 0;
+}
+
+.floatCard1 { --dur: 5s;   --delay: 0s;   --fc-color: #4A9EE0; }
+.floatCard2 { --dur: 6s;   --delay: 1s;   --fc-color: #3EC98E; }
+.floatCard3 { --dur: 4.5s; --delay: 0.5s; --fc-color: #E8A838; }
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}
+
+.floatLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.floatValue {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ─────────────────────────────────────────
+   HEADLINE
+───────────────────────────────────────── */
+.headline {
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  animation: fadeSlideUp 0.8s 0.1s ease both;
+}
+
+.headlineAccent {
+  color: var(--accent-primary);
+  font-style: italic;
+}
+
+.headlineLight {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 40px;
+  animation: fadeSlideUp 0.8s 0.2s ease both;
+}
+
+/* ─────────────────────────────────────────
+   STATS
+───────────────────────────────────────── */
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.8s 0.3s ease both;
+}
+
+.stat { display: flex; flex-direction: column; gap: 4px; }
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.statDivider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+/* ─────────────────────────────────────────
+   CTA
+───────────────────────────────────────── */
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.8s 0.4s ease both;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: var(--accent-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.ctaPrimary:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-primary) 30%, transparent);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+.ctaSecondary:hover {
+  border-color: var(--text-muted);
+  background: var(--bg-overlay);
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────
+   SCROLL INDICATOR
+───────────────────────────────────────── */
+.scrollIndicator {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-muted);
+  animation: bounce 2s ease-in-out infinite;
+  transition: color var(--transition);
+}
+.scrollIndicator:hover { color: var(--text-primary); }
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(5px); }
+}
+
+/* ─────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .rightCol { display: none; }
+}
+
+@media (max-width: 600px) {
+  .statDivider { display: none; }
+  .statRow     { gap: 20px; }
+}

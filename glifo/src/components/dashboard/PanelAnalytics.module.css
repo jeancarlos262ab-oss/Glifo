@@ -1,0 +1,86 @@
+.panel { padding: 32px 28px; display: flex; flex-direction: column; gap: 24px; max-width: 1200px; }
+.loadState, .errorState { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 80px; color: var(--text-muted); font-size: 0.88rem; }
+.retryBtn { display: flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 0.82rem; color: var(--text-secondary); cursor: pointer; transition: all var(--transition); }
+.retryBtn:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+.topBar { display: flex; align-items: flex-start; justify-content: space-between; }
+.headerLabel { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+.headerTitle { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 6px; }
+.headerSub { font-size: 0.88rem; color: var(--text-secondary); }
+.refreshBtn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: none; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-muted); cursor: pointer; transition: all var(--transition); }
+.refreshBtn:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+.kpiRow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.kpiCard {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 18px 16px 16px;
+  background: var(--bg-surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); min-height: 96px;
+  transition: box-shadow var(--transition), transform var(--transition);
+  position: relative; overflow: hidden;
+}
+.kpiCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--kpi-accent, var(--accent-primary));
+  opacity: 0.7;
+}
+.kpiCard:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.kpiCard:hover .kpiIcon { opacity: 0.30; transform: translate(10px, 12px) rotate(10deg) scale(1.1); }
+.kpiIcon {
+  position: absolute;
+  bottom: -8px; right: -8px;
+  width: 72px; height: 72px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  pointer-events: none;
+  color: var(--text-secondary);
+  opacity: 0.22;
+  transition: opacity var(--transition), transform var(--transition);
+  transform: translate(6px, 8px) rotate(6deg);
+}
+.kpiInfo { display: flex; flex-direction: column; gap: 2px; position: relative; z-index: 1; }
+.kpiVal { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); line-height: 1; }
+.kpiLabel { font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.cardWide { grid-column: span 2; }
+.cardHead { padding: 16px 20px; border-bottom: 1px solid var(--border); background: var(--bg-elevated); }
+.cardTitle { font-family: var(--font-display); font-size: 0.88rem; font-weight: 400; color: var(--text-primary); }
+
+.chartList { padding: 14px 20px; display: flex; flex-direction: column; gap: 12px; }
+.chartRow { display: grid; grid-template-columns: 130px 1fr 60px; align-items: center; gap: 10px; }
+.chartLabel { display: flex; align-items: center; gap: 7px; font-size: 0.8rem; color: var(--text-secondary); overflow: hidden; }
+.chartLabel span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chartVal { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-primary); text-align: right; }
+.chartPct { color: var(--text-muted); font-size: 0.62rem; }
+.statusDot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.colBullet { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+.emptyChart { font-size: 0.82rem; color: var(--text-muted); text-align: center; padding: 16px 0; }
+
+.miniBarTrack { height: 6px; background: var(--bg-overlay); border-radius: 3px; overflow: hidden; }
+.miniBarFill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
+.queueStats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 16px 20px 12px; }
+.queueStat { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px; background: var(--bg-base); border-radius: var(--radius-md); }
+.queueStatVal { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; line-height: 1; }
+.queueStatLabel { font-family: var(--font-mono); font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); text-align: center; }
+.cardDivider { height: 1px; background: var(--border); margin: 0 20px; }
+.processingInfo { padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 8px; }
+.processingRow { display: flex; justify-content: space-between; align-items: center; }
+.processingLabel { font-size: 0.78rem; color: var(--text-secondary); }
+.processingVal { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--text-primary); }
+
+.grafoStats { display: flex; align-items: center; justify-content: center; gap: 0; padding: 32px 20px; }
+.grafoStat { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+.grafoVal { font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; color: var(--text-primary); line-height: 1; }
+.grafoLabel { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+.grafoSep { width: 1px; height: 50px; background: var(--border); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.9s linear infinite; }
+
+@media (max-width: 1100px) { .kpiRow { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .cardWide { grid-column: span 1; } }

@@ -1,0 +1,13 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  background: var(--tag-color, var(--accent-tag-bg));
+  color: var(--accent-tag-text);
+  border: 1px solid color-mix(in srgb, var(--accent-tag-text) 20%, transparent);
+  white-space: nowrap;
+}
